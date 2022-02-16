@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 use CodeIgniter\RESTful\ResourceController;
-use CodeIgniter\I18n\Time;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
