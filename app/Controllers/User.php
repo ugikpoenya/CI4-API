@@ -26,6 +26,7 @@ class User extends ResourceController
             try {
                 $payload = JWT::decode($token, new Key($key, 'HS256'));
                 $data['payload'] = $payload;
+                $data['user'] = $this->usersModel->find($payload->uid);
                 return $this->respond($data);
             } catch (\Throwable $th) {
                 return $this->failUnauthorized($th->getMessage());
@@ -50,6 +51,7 @@ class User extends ResourceController
                 );
                 $data['message'] = 'Login successfully';
                 $data['token'] = JWT::encode($payload, $key, 'HS256');
+                $data['user'] = $user;
                 return $this->respond($data);
             }
             return $this->fail('Wrong Password');
