@@ -39,7 +39,7 @@ class Users extends ResourceController
 
     public function update($id = null)
     {
-        if ($id == 1)  return $this->failUnauthorized('Access denied');
+        if ($id == 1)  return $this->fail('Access denied');
         if ($this->usersModel->find($id)) {
             if ($this->usersModel->update($id, $this->request->getVar())) {
                 return $this->respond(['message' => "Updated successfully"]);
@@ -53,8 +53,8 @@ class Users extends ResourceController
 
     public function delete($id = null)
     {
-        if($id==1)  return $this->failUnauthorized('Access denied');
-        
+        if($id==1)  return $this->fail('Access denied');
+
         if ($this->usersModel->find($id)) {
             if ($this->usersModel->delete($id)) {
                 return $this->respond(['message' => "Successfully deleted"]);
