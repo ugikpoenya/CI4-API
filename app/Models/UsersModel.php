@@ -52,6 +52,7 @@ class UsersModel extends Model
         'email'             => ['label' => 'Email', 'rules' => 'required|max_length[255]|valid_email|is_unique[users.email,user_id,{user_id}]'],
         'level'             => ['label' => 'Level', 'rules' => 'required|min_length[3]|max_length[25]'],
         'status'            => ['label' => 'Status', 'rules' => 'required|min_length[3]|max_length[25]'],
+        'password'          => ['label' => 'Password', 'rules' => 'required|min_length[5]|max_length[25]'],
     ];
 
     protected $validationMessages   = [];
