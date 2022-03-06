@@ -37,7 +37,10 @@ class User extends ResourceController
 
     public function login()
     {
-        $user = $this->usersModel->where('email', $this->request->getVar('email'))->first();
+        $user = $this->usersModel
+            ->where('status', 'Active')
+            ->where('email', $this->request->getVar('email'))
+            ->first();
         if ($user) {
             if (password_verify($this->request->getVar('password'), $user->password)) {
                 $key = getenv('TOKEN_SECRET');
