@@ -30,7 +30,7 @@ class Users extends ResourceController
 
     public function create()
     {
-        if ($this->usersModel->save($this->request->getPost())) {
+        if ($this->usersModel->save($this->request->getVar())) {
             return $this->respond(['message' => "Saved successfully"]);
         }
         return $this->fail($this->usersModel->errors());
